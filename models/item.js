@@ -15,7 +15,7 @@ const itemSchema = mongoose.Schema(
       type: String,
     },
     rating: {
-      require: true,
+      default: "5.0",
       type: String,
     },
     isVeg: {

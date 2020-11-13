@@ -55,3 +55,16 @@ exports.getAllItem = (req, res) => {
       res.json(items);
   });
 };
+
+exports.getItemById = (req, res, next, id) => {
+  Item.findById(id)
+    .exec((err, item) => {
+      if (err) {
+        return res.status(400).json({
+          error: "item not found",
+        });
+      }
+      req.item = item;
+      next();
+    });
+};

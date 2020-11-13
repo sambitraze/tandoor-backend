@@ -5,6 +5,7 @@ const bodyparser = require('body-parser');
 const temproute = require("./routes/temp");
 const itemroute = require("./routes/item");
 const orderRoute = require("./routes/order");
+const pdfRoute = require("./routes/pdfmaker");
 const cors = require("cors");
 require("dotenv/config");
 
@@ -13,6 +14,7 @@ app.use(bodyparser.json());
 app.use("/api", temproute);
 app.use("/item", itemroute);
 app.use("/order", orderRoute);
+app.use("/pdfmaker", pdfRoute);
 
 //Mongo DB
 mongoose

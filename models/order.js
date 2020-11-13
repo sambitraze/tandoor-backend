@@ -3,16 +3,15 @@ const { ObjectId } = mongoose.Schema;
 
 const ItemCartSchema = mongoose.Schema({
   item: {
-    type: ObjectId,
-    ref: "item",
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Item",
   },
-  name: String,
   count: String,
-  price: String,
 });
 
 const orderSchema = mongoose.Schema(
   {
+    items: [ItemCartSchema],
     orderId: {
       require: true,
       type: String,
@@ -22,11 +21,9 @@ const orderSchema = mongoose.Schema(
       ref: "user",
     },
     custName: {
-      require: true,
       type: String,
     },
     custNumber: {
-      require: true,
       type: String,
     },
     deliveryby: {
