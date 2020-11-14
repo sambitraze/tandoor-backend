@@ -5,6 +5,7 @@ exports.createOrder = (req, res) => {
   const order = new Order(req.body);
   order.save((err, createdorder) => {
     if (err) {
+      console.log(err);
       res.status(400).json({
         error: "error saving order in DB",
       });
@@ -40,7 +41,6 @@ exports.updatetOrder = (req, res) => {
       }
       res.json({
         message: "Updated",
-        orderUpdated,
       });
     }
   );

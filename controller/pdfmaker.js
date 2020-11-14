@@ -9,7 +9,6 @@ exports.createPdf = (req, res) => {
 
   try {
     const order = new Order(req.body);
-    console.log(req.body.items.length);
 
     var table =
       '<center><table style="text-align:center;width:95%;font-weight: bold;"><thead><tr><th colspan="6">Tandoor Hut</th></tr></thead><tbody><tr></tr><tr></tr><tr><td colspan="6">Godhana Road Ara<br>Phone No. 9852259112, 8340245998<br>Email: tandoorhutara@gmail.com<br>GSTIN:10HIAPK7037L1ZA<br>State: 10-Bihar</td></tr><tr></tr><tr></tr><tr><td colspan="6">TAX INVOICE</td></tr><tr></tr><tr></tr><tr><td colspan="3"></td><td colspan="2">Invoice No.</td><td>' +
@@ -48,7 +47,6 @@ exports.createPdf = (req, res) => {
       '</td></tr><tr><td></td><td></td><td></td><td colspan="2"></td><td></td></tr><tr><td></td><td></td><td></td><td colspan="2"></td><td></td></tr></tbody></table></center>';
 
     html = table;
-    console.log(html);
     var options = { width: "56mm" };
     pdf.create(html, options).toStream((err, stream) => {
       if (err) return console.log(err);

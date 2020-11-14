@@ -42,6 +42,11 @@ const orderSchema = mongoose.Schema(
       default: "Billing",
       enum: ["Delivery", "Billing"],
     },
+    status: {
+      type: String,
+      default: "placed",
+      enum: ["placed", "cancelled","completed", "out for delivery"]
+    },
     amount: {
       require: true,
       type: String,
