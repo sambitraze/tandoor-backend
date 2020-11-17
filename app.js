@@ -36,10 +36,10 @@ app.get("/", (req, res) => {
 });
 
 // for local
-app.listen(3000);
+// app.listen(3000);
 
 //for server 
-// const httpServer = http.createServer(app);
-// httpServer.listen(80, () => {
-//   console.log("HTTP Server running on port 80");
-// });
+const httpServer = http.createServer(app);
+httpServer.listen(80, () => {
+  console.log("HTTP Server running on port 80");
+});
