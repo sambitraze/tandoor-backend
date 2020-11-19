@@ -6,7 +6,7 @@ const {
   getUser,
   getUsers,
   updateUser,
-} = require("../controllers/user");
+} = require("../controller/user");
 
 // Middlewares
 // const { isSignedIn, isAuthenticated, isAdmin } = require("../controllers/auth");
