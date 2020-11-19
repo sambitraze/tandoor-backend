@@ -1,7 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
+
 const bodyparser = require('body-parser');
+
+const userRoutes = require("./routes/user");
 const temproute = require("./routes/temp");
 const itemroute = require("./routes/item");
 const orderRoute = require("./routes/order");
@@ -14,6 +17,7 @@ require("dotenv/config");
 app.use(cors());
 app.use(bodyparser.json());
 app.use("/admin", express.static(path.join(__dirname, '/dashboard')));
+app.use("/api", userRoutes);
 app.use("/api", temproute);
 app.use("/item", itemroute);
 app.use("/order", orderRoute);
