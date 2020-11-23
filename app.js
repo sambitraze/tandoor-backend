@@ -17,7 +17,7 @@ require("dotenv/config");
 app.use(cors());
 app.use(bodyparser.json());
 app.use("/admin", express.static(path.join(__dirname, '/dashboard')));
-app.use("/api", userRoutes);
+app.use("/user", userRoutes);
 app.use("/api", temproute);
 app.use("/item", itemroute);
 app.use("/order", orderRoute);

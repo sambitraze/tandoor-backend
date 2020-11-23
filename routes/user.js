@@ -6,6 +6,7 @@ const {
   getUser,
   getUsers,
   updateUser,
+  createUser,
 } = require("../controller/user");
 
 // Middlewares
@@ -18,13 +19,16 @@ router.param("userId", getUserById);
 
 //All Routes
 
+//Create a User
+router.post("/create/", createUser);
+
 //Get a User
-router.get("/user/:userId", getUser);
+router.get("/:userId", getUser);
 
 //Get All Users
-router.get("/getUsers/", getUsers);
+router.get("/", getUsers);
 
 //Update User
-router.put("/user/:userId", updateUser);
+router.put("/update/:userId", updateUser);
 
 module.exports = router;

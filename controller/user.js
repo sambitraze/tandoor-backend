@@ -12,6 +12,18 @@ exports.getUserById = (req, res, next, id) => {
   });
 };
 
+exports.createUser = (req,res) => {
+  const user = new User(req.body);
+  user.save((err, user) => {
+    if (err) {
+      res.status(400).json({
+        error: "error saving user in DB",
+      });
+    }
+    res.json(user);
+  });
+}
+
 exports.getUser = (req, res) => {
   req.profile.password = undefined; //Password
   req.profile.createdAt = undefined; //Created At
