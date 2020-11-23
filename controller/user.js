@@ -15,6 +15,7 @@ exports.getUserById = (req, res, next, id) => {
 exports.createUser = (req,res) => {
   const user = new User(req.body);
   user.save((err, user) => {
+    console.log(err);
     if (err) {
       res.status(400).json({
         error: "error saving user in DB",
