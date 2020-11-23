@@ -30,6 +30,9 @@ var userSchema = mongoose.Schema(
       type: String,
       trim: true,
     },
+    address: {
+      type: String
+    },
     deviceToken: {
       type: String,
       trim: true,
