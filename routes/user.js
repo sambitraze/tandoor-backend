@@ -22,7 +22,7 @@ router.param("userId", getUserById);
 router.get("/user/:userId", getUser);
 
 //Get All Users
-router.get("/getUsers/:userId", getUsers);
+router.get("/getUsers/", getUsers);
 
 //Update User
 router.put("/user/:userId", updateUser);
