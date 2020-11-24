@@ -2,10 +2,6 @@ const mongoose = require("mongoose");
 
 var userSchema = mongoose.Schema(
   {
-    uid: {
-      type: String,
-      trim: true,
-    },
     name: {
       type: String,
       maxlength: 64,
