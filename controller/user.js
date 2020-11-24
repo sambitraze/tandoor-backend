@@ -25,6 +25,17 @@ exports.createUser = (req,res) => {
   });
 }
 
+exports.getUserByPhone = (req, res) => {
+  User.find({phone: req.body.phone}).exec((err, user) => {
+    if(err) {
+      return  res.json({
+        error: "No Phone Number is there."
+      });
+    } else
+    res.json(user);
+  })
+}
+
 exports.getUser = (req, res) => {
   req.profile.password = undefined; //Password
   req.profile.createdAt = undefined; //Created At

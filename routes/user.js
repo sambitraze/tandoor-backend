@@ -7,6 +7,7 @@ const {
   getUsers,
   updateUser,
   createUser,
+  getUserByPhone
 } = require("../controller/user");
 
 // Middlewares
@@ -24,6 +25,9 @@ router.post("/create/", createUser);
 
 //Get a User
 router.get("/:userId", getUser);
+
+//Get User By Phone Number
+router.post("/number", getUserByPhone);
 
 //Get All Users
 router.get("/", getUsers);
