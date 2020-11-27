@@ -12,7 +12,7 @@ exports.getUserById = (req, res, next, id) => {
   });
 };
 
-exports.createUser = (req,res) => {
+exports.createUser = (req, res) => {
   const user = new User(req.body);
   user.save((err, user) => {
     console.log(err);
@@ -23,18 +23,25 @@ exports.createUser = (req,res) => {
     }
     res.json(user);
   });
-}
+};
 
 exports.getUserByPhone = (req, res) => {
-  User.find({phone: req.body.phone}).exec((err, user) => {
-    if(err) {
-      return  res.json({
-        error: "No Phone Number is there."
-      });
-    } else
-    res.json(user);
-  })
-}
+  User.find({ phone: req.body.phone })
+    .populate({
+      path: "cart",
+      populate: {
+        path: "item",
+        models: "Item",
+      },
+    })
+    .exec((err, user) => {
+      if (err) {
+        return res.json({
+          error: "No Phone Number is there.",
+        });
+      } else res.json(user);
+    });
+};
 
 exports.getUser = (req, res) => {
   req.profile.password = undefined; //Password
@@ -56,7 +63,7 @@ exports.getUsers = (req, res) => {
 
 exports.updateUser = (req, res) => {
   User.findByIdAndUpdate(
-    { _id: req.profile._id },
+    { _id: req.body._id },
     { $set: req.body },
     { new: true, useFindAndModify: false },
     (err, user) => {

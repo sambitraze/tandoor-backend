@@ -1,7 +1,14 @@
 const mongoose = require("mongoose");
-
+const CartSchema = mongoose.Schema({
+  item: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Item",
+  },
+  count: String,
+});
 var userSchema = mongoose.Schema(
   {
+    cart: [CartSchema],
     name: {
       type: String,
       maxlength: 64,
