@@ -62,12 +62,14 @@ exports.getUsers = (req, res) => {
 };
 
 exports.updateUser = (req, res) => {
+  console.log(req.body);
   User.findByIdAndUpdate(
     { _id: req.body._id },
     { $set: req.body },
     { new: true, useFindAndModify: false },
     (err, user) => {
       if (err) {
+        comnsole.log(err);
         return res.status(400).json({
           error: "You are not authorized to update this user",
         });
