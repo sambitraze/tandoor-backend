@@ -69,7 +69,7 @@ exports.updateUser = (req, res) => {
     { new: true, useFindAndModify: false },
     (err, user) => {
       if (err) {
-        comnsole.log(err);
+        console.log(err);
         return res.status(400).json({
           error: "You are not authorized to update this user",
         });
