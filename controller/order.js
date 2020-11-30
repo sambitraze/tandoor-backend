@@ -10,7 +10,7 @@ exports.createOrder = (req, res) => {
         error: "error saving order in DB",
       });
     }
-    res.json({message : "order saved"});
+    res.json({ message: "order saved" });
   });
 };
 
@@ -48,9 +48,13 @@ exports.updatetOrder = (req, res) => {
 
 exports.getAllOrder = (req, res) => {
   Order.find()
-    .populate({path: "items", populate: {
-      path: "item",models : 'Item'
-    }} )
+    .populate({
+      path: "items",
+      populate: {
+        path: "item",
+        models: "Item",
+      },
+    })
     .sort([["createdAt", "desc"]])
     .exec((err, orders) => {
       if (err) {
@@ -64,10 +68,14 @@ exports.getAllOrder = (req, res) => {
 };
 
 exports.getAllOrderById = (req, res) => {
-  Order.findById(req.body.id)
-    .populate({path: "items", populate: {
-      path: "item",models : 'Item'
-    }} )
+  Order.findById({ customer: req.body.id })
+    .populate({
+      path: "items",
+      populate: {
+        path: "item",
+        models: "Item",
+      },
+    })
     .sort([["createdAt", "desc"]])
     .exec((err, orders) => {
       if (err) {
