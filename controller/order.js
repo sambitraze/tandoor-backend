@@ -68,7 +68,7 @@ exports.getAllOrder = (req, res) => {
 };
 
 exports.getAllOrderById = (req, res) => {
-  Order.findById({ customer: req.body.id })
+  Order.findById({ customer: {_id:req.body.id} })
     .populate({
       path: "items",
       populate: {
