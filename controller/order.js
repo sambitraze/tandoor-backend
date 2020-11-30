@@ -64,7 +64,7 @@ exports.getAllOrder = (req, res) => {
 };
 
 exports.getAllOrderById = (req, res) => {
-  Order.findById(body.id)
+  Order.findById(req.body.id)
     .populate({path: "items", populate: {
       path: "item",models : 'Item'
     }} )
