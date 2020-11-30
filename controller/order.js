@@ -62,3 +62,20 @@ exports.getAllOrder = (req, res) => {
       res.json(orders);
     });
 };
+
+exports.getAllOrderById = (req, res) => {
+  Order.findById(body.id)
+    .populate({path: "items", populate: {
+      path: "item",models : 'Item'
+    }} )
+    .sort([["createdAt", "desc"]])
+    .exec((err, orders) => {
+      if (err) {
+        console.log(err);
+        res.status(400).json({
+          error: "error getting items from DB",
+        });
+      }
+      res.json(orders);
+    });
+};
