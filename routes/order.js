@@ -5,6 +5,6 @@ const {createOrder, updatetOrder,getAllOrder, getAllOrderById} = require("../con
 router.post("/create", createOrder);
 router.put("/update", updatetOrder);
 router.get("/", getAllOrder);
-router.get("/id", getAllOrderById);
+router.post("/id", getAllOrderById);
 
 module.exports = router ;
