@@ -75,7 +75,7 @@ exports.getAllOrderById = (req, res) => {
         path: "item",
         models: "Item",
       },
-    }).populate({path: "customer", models: "User"})
+    }).populate("customer")
     .sort([["createdAt", "desc"]])
     .exec((err, orders) => {
       if (err) {
