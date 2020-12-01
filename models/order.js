@@ -18,7 +18,7 @@ const orderSchema = mongoose.Schema(
     },
     customer: {
       type: ObjectId,
-      ref: "user",
+      ref: "User",
     },
     custName: {
       type: String,
