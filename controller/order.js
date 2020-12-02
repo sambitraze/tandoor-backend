@@ -10,24 +10,9 @@ exports.createOrder = (req, res) => {
         error: "error saving order in DB",
       });
     }
-    res.json({ message: "order saved" });
+    else res.json({ message: "order saved" });
   });
 };
-
-// exports.deleteOrder = (req, res) => {
-//   let order = req.order;
-//   Order.deleteOne(order, (err, orderdeleted) => {
-//     if (err) {
-//       res.status(400).json({
-//         error: "error deleting order in DB",
-//       });
-//     }
-//     res.json({
-//       message: "Deleted",
-//       orderdeleted,
-//     });
-//   });
-// };
 
 exports.updatetOrder = (req, res) => {
   Order.updateOne(
@@ -39,7 +24,7 @@ exports.updatetOrder = (req, res) => {
           error: "error updating order in DB",
         });
       }
-      res.json({
+      else res.json({
         message: "Updated",
       });
     }
@@ -63,12 +48,12 @@ exports.getAllOrder = (req, res) => {
           error: "error getting items from DB",
         });
       }
-      res.json(orders);
+      else res.json(orders);
     });
 };
 
-exports.getAllOrderById = (req, res) => {
-  Order.find({ "customer": req.body.id})
+exports.getAllOrderByUserId = (req, res) => {
+  Order.find({ "customer": req.body.id })
     .populate({
       path: "items",
       populate: {
@@ -76,6 +61,7 @@ exports.getAllOrderById = (req, res) => {
         models: "Item",
       },
     }).populate("customer")
+    .populate("deliveryby")
     .sort([["createdAt", "desc"]])
     .exec((err, orders) => {
       if (err) {
@@ -84,6 +70,27 @@ exports.getAllOrderById = (req, res) => {
           error: "error getting items from DB",
         });
       }
-      res.json(orders);
+      else res.json(orders);
+    });
+};
+exports.getAllOrderByDeliveryId = (req, res) => {
+  Order.find({ "deliveryby": req.body.id })
+    .populate({
+      path: "items",
+      populate: {
+        path: "item",
+        models: "Item",
+      },
+    }).populate("customer")
+    .populate("deliveryby")
+    .sort([["createdAt", "desc"]])
+    .exec((err, orders) => {
+      if (err) {
+        console.log(err);
+        res.status(400).json({
+          error: "error getting items from DB",
+        });
+      }
+      else res.json(orders);
     });
 };

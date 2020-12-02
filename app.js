@@ -8,6 +8,7 @@ const temproute = require("./routes/temp");
 const itemroute = require("./routes/item");
 const orderRoute = require("./routes/order");
 const pdfRoute = require("./routes/pdfmaker");
+const deliveryBoyRoute = require("./routes/delivery");
 const notificationRoute = require("./routes/notifications")
 const path = require("path");
 const cors = require("cors");
@@ -24,6 +25,7 @@ app.use("/item", itemroute);
 app.use("/order", orderRoute);
 app.use("/pdfmaker", pdfRoute);
 app.use("/notification", notificationRoute);
+app.use("/deliveryBoy", deliveryBoyRoute);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
