@@ -1,8 +1,8 @@
 const Delivery = require("../models/delivery");
 
 exports.createDeliveryBoy = (req, res) => {
-  const Delivery = new Delivery(req.body);
-  Delivery.save((err, delivery) => {
+  const delivery = new Delivery(req.body);
+  delivery.save((err, delivery) => {
     console.log(err);
     if (err) {
       res.status(400).json({
