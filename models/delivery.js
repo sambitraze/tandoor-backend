@@ -44,6 +44,16 @@ var deliverySchema = mongoose.Schema(
       trim: true,
       default: "0",
     },
+    monthly: {
+      type: String,
+      trim: true,
+      default: "0",
+    },
+    monthlyreset: {
+      type: Boolean,
+      trim: true,
+      default: false,
+    },
     completed: {
       type: String,
       trim: true,
