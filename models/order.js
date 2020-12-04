@@ -28,7 +28,7 @@ const orderSchema = mongoose.Schema(
     },
     deliveryby: {
       type: ObjectId,
-      ref: "delivery",
+      ref: "Delivery",
     },
     paymentType: {
       require: true,
