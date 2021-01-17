@@ -11890,7 +11890,7 @@ V_:function(a){var s=0,r=P.T(t.z),q,p,o,n,m
 var $async$V_=P.O(function(b,c){if(b===1)return P.Q(c,r)
 while(true)switch(s){case 0:n=t.X
 s=3
-return P.W(G.abT("http://tandoorhut.tk/item/create",a,P.al(["Content-Type","application/json"],n,n)),$async$V_)
+return P.W(G.abT("http://64.225.85.5/item/create",a,P.al(["Content-Type","application/json"],n,n)),$async$V_)
 case 3:m=c
 n=m.b
 p=m.e
@@ -11906,7 +11906,7 @@ Du:function(){var s=0,r=P.T(t.MG),q,p,o,n,m
 var $async$Du=P.O(function(a,b){if(a===1)return P.Q(b,r)
 while(true)switch(s){case 0:n=t.X
 s=3
-return P.W(G.abz("http://tandoorhut.tk/item/",P.al(["Content-Type","application/json"],n,n)),$async$Du)
+return P.W(G.abz("http://64.225.85.5/item/",P.al(["Content-Type","application/json"],n,n)),$async$Du)
 case 3:m=b
 n=m.b
 p=m.e
@@ -11920,7 +11920,7 @@ V0:function(a){var s=0,r=P.T(t.yq),q,p,o,n
 var $async$V0=P.O(function(b,c){if(b===1)return P.Q(c,r)
 while(true)switch(s){case 0:p=t.X
 s=3
-return P.W(G.ale("http://tandoorhut.tk/item/delete/"+H.b(a),P.al(["Content-Type","application/json"],p,p)),$async$V0)
+return P.W(G.ale("http://64.225.85.5/item/delete/"+H.b(a),P.al(["Content-Type","application/json"],p,p)),$async$V0)
 case 3:o=c
 n=C.O.K1(0,B.dv(U.dt(o.e).c.a.h(0,"charset")).bg(0,o.x),null)
 if(o.b===200){q=!0
@@ -12631,7 +12631,7 @@ WB:function(a){var s=0,r=P.T(t.z),q,p,o,n,m
 var $async$WB=P.O(function(b,c){if(b===1)return P.Q(c,r)
 while(true)switch(s){case 0:n=t.X
 s=3
-return P.W(G.abT("http://tandoorhut.tk/order/create",a,P.al(["Content-Type","application/json"],n,n)),$async$WB)
+return P.W(G.abT("http://64.225.85.5/order/create",a,P.al(["Content-Type","application/json"],n,n)),$async$WB)
 case 3:m=c
 n=m.b
 p=m.e
@@ -12648,7 +12648,7 @@ WE:function(a){var s=0,r=P.T(t.z),q,p,o,n,m
 var $async$WE=P.O(function(b,c){if(b===1)return P.Q(c,r)
 while(true)switch(s){case 0:n=t.X
 s=3
-return P.W(G.al1("http://tandoorhut.tk/order/update",a,P.al(["Content-Type","application/json"],n,n)),$async$WE)
+return P.W(G.al1("http://64.225.85.5/order/update",a,P.al(["Content-Type","application/json"],n,n)),$async$WE)
 case 3:m=c
 n=m.b
 p=m.e
@@ -12665,7 +12665,7 @@ WC:function(){var s=0,r=P.T(t.z),q,p,o,n,m
 var $async$WC=P.O(function(a,b){if(a===1)return P.Q(b,r)
 while(true)switch(s){case 0:n=t.X
 s=3
-return P.W(G.abz("http://tandoorhut.tk/order/",P.al(["Content-Type","application/json"],n,n)),$async$WC)
+return P.W(G.abz("http://64.225.85.5/order/",P.al(["Content-Type","application/json"],n,n)),$async$WC)
 case 3:m=b
 n=m.b
 p=m.e
@@ -14755,7 +14755,7 @@ QT:function(a){var s=0,r=P.T(t.z),q,p,o,n,m
 var $async$QT=P.O(function(b,c){if(b===1)return P.Q(c,r)
 while(true)switch(s){case 0:n=t.X
 s=3
-return P.W(G.abT("http://tandoorhut.tk/deliveryBoy/create",a,P.al(["Content-Type","application/json"],n,n)),$async$QT)
+return P.W(G.abT("http://64.225.85.5/deliveryBoy/create",a,P.al(["Content-Type","application/json"],n,n)),$async$QT)
 case 3:m=c
 n=m.b
 p=m.e
@@ -14769,7 +14769,7 @@ ok:function(a){var s=0,r=P.T(t.yq),q,p,o
 var $async$ok=P.O(function(b,c){if(b===1)return P.Q(c,r)
 while(true)switch(s){case 0:p=t.X
 s=3
-return P.W(G.al1("http://tandoorhut.tk/deliveryBoy/update",a,P.al(["Content-Type","application/json"],p,p)),$async$ok)
+return P.W(G.al1("http://64.225.85.5/deliveryBoy/update",a,P.al(["Content-Type","application/json"],p,p)),$async$ok)
 case 3:o=c
 if(o.b===200){q=!0
 s=1
@@ -14782,7 +14782,7 @@ Ck:function(){var s=0,r=P.T(t.Lm),q,p,o,n,m
 var $async$Ck=P.O(function(a,b){if(a===1)return P.Q(b,r)
 while(true)switch(s){case 0:n=t.X
 s=3
-return P.W(G.abz("http://tandoorhut.tk/deliveryBoy/",P.al(["Content-Type","application/json"],n,n)),$async$Ck)
+return P.W(G.abz("http://64.225.85.5/deliveryBoy/",P.al(["Content-Type","application/json"],n,n)),$async$Ck)
 case 3:m=b
 n=m.b
 p=m.e
@@ -14796,7 +14796,7 @@ QV:function(){var s=0,r=P.T(t.z),q,p,o,n,m
 var $async$QV=P.O(function(a,b){if(a===1)return P.Q(b,r)
 while(true)switch(s){case 0:n=t.X
 s=3
-return P.W(G.abz("http://tandoorhut.tk/user/",P.al(["Content-Type","application/json"],n,n)),$async$QV)
+return P.W(G.abz("http://64.225.85.5/user/",P.al(["Content-Type","application/json"],n,n)),$async$QV)
 case 3:m=b
 n=m.b
 p=m.e
@@ -20147,7 +20147,7 @@ X9:function(a){var s=0,r=P.T(t.z),q,p,o,n
 var $async$X9=P.O(function(b,c){if(b===1)return P.Q(c,r)
 while(true)switch(s){case 0:o=t.X
 s=3
-return P.W(G.abT("http://tandoorhut.tk/pdfmaker",a,P.al(["Content-Type","application/json"],o,o)),$async$X9)
+return P.W(G.abT("http://64.225.85.5/pdfmaker",a,P.al(["Content-Type","application/json"],o,o)),$async$X9)
 case 3:n=c
 o=n.b
 p=n.x
