@@ -36,7 +36,7 @@ exports.getUserByPhone = (req, res) => {
     })
     .exec((err, user) => {
       if (err) {
-        return res.json({
+        return res.status(400).json({
           error: "No Phone Number is there.",
         });
       } else res.json(user);
