@@ -8,22 +8,19 @@ exports.createDeliveryBoy = (req, res) => {
       res.status(400).json({
         error: "error saving user in DB",
       });
-    }
-   else res.json(delivery);
+    } else res.json(delivery);
   });
 };
 
 exports.getDeliveryBoyByEmail = (req, res) => {
-  Delivery.find({ email: req.body.email })
-    .exec((err, delivery) => {
-      if (err) {
-        return res.json({
-          error: "No Phone Number is there.",
-        });
-      } else res.json(delivery);
-    });
+  Delivery.find({ email: req.body.email }).exec((err, delivery) => {
+    if (err) {
+      return res.json({
+        error: "No Phone Number is there.",
+      });
+    } else res.json(delivery);
+  });
 };
-
 
 exports.getAllDeliveryBoy = (req, res) => {
   Delivery.find().exec((err, delivery) => {
@@ -31,8 +28,7 @@ exports.getAllDeliveryBoy = (req, res) => {
       res.status(400).json({
         error: "No USERS are found",
       });
-    }
-   else res.json(delivery);
+    } else res.json(delivery);
   });
 };
 
@@ -47,8 +43,7 @@ exports.updateDeliveryBoy = (req, res) => {
         return res.status(400).json({
           error: "You are not authorized to update this user",
         });
-      }
-     else res.json(delivery);
+      } else res.json(delivery);
     }
   );
 };

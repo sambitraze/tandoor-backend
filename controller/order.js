@@ -52,6 +52,27 @@ exports.getAllOrder = (req, res) => {
     });
 };
 
+exports.getOrderByCount= (req, res) => {
+  Order.find().skip(req.body.skip).limit(req.body.limit)
+    .populate({
+      path: "items",
+      populate: {
+        path: "item",
+        models: "Item",
+      },
+    })
+    .sort([["createdAt", "desc"]])
+    .exec((err, orders) => {
+      if (err) {
+        console.log(err);
+        res.status(400).json({
+          error: "error getting items from DB",
+        });
+      }
+      else res.json(orders);
+    });
+};
+
 exports.getAllOrderByUserId = (req, res) => {
   Order.find({ "customer": req.body.id })
     .populate({

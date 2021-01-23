@@ -51,6 +51,9 @@ exports.getUser = (req, res) => {
 };
 
 exports.getUsers = (req, res) => {
+  // User.collection.countDocuments({}, (err, delivery) => {
+  //   console.log(delivery);
+  // });
   User.find().exec((err, user) => {
     if (err) {
       res.status(400).json({
