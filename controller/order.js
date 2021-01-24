@@ -40,6 +40,8 @@ exports.getAllOrder = (req, res) => {
         models: "Item",
       },
     })
+    .populate("customer")
+    .populate("deliveryby")
     .sort([["createdAt", "desc"]])
     .exec((err, orders) => {
       if (err) {
@@ -60,7 +62,8 @@ exports.getOrderByCount= (req, res) => {
         path: "item",
         models: "Item",
       },
-    })
+    }).populate("customer")
+    .populate("deliveryby")
     .sort([["createdAt", "desc"]])
     .exec((err, orders) => {
       if (err) {
