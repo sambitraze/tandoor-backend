@@ -51,9 +51,6 @@ exports.getUser = (req, res) => {
 };
 
 exports.getUsers = (req, res) => {
-  // User.collection.countDocuments({}, (err, delivery) => {
-  //   console.log(delivery);
-  // });
   User.find().exec((err, user) => {
     if (err) {
       res.status(400).json({
@@ -81,4 +78,18 @@ exports.updateUser = (req, res) => {
       res.json(user);
     }
   );
+};
+
+exports.userCount = (req, res) => {
+  User.collection.countDocuments({}, (err, usercount) => {
+    if (err) {
+      res.status(400).json({
+        error: "user count error",
+      });
+    } else {
+      res.json({
+        usercount,
+      });
+    }
+  });
 };

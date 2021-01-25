@@ -47,3 +47,17 @@ exports.updateDeliveryBoy = (req, res) => {
     }
   );
 };
+
+exports.deliveryCount = (req, res) => {
+  Delivery.collection.countDocuments({}, (err, deliverycount) => {
+    if (err) {
+      res.status(400).json({
+        error: "delivery count error",
+      });
+    } else {
+      res.json({
+        deliverycount,
+      });
+    }
+  });
+};

@@ -9,8 +9,7 @@ exports.createOrder = (req, res) => {
       res.status(400).json({
         error: "error saving order in DB",
       });
-    }
-    else res.json({ message: "order saved" });
+    } else res.json({ message: "order saved" });
   });
 };
 
@@ -23,10 +22,10 @@ exports.updatetOrder = (req, res) => {
         res.status(400).json({
           error: "error updating order in DB",
         });
-      }
-      else res.json({
-        message: "Updated",
-      });
+      } else
+        res.json({
+          message: "Updated",
+        });
     }
   );
 };
@@ -49,20 +48,22 @@ exports.getAllOrder = (req, res) => {
         res.status(400).json({
           error: "error getting items from DB",
         });
-      }
-      else res.json(orders);
+      } else res.json(orders);
     });
 };
 
-exports.getOrderByCount= (req, res) => {
-  Order.find().skip(req.body.skip).limit(req.body.limit)
+exports.getOrderByCount = (req, res) => {
+  Order.find()
+    .skip(req.body.skip)
+    .limit(req.body.limit)
     .populate({
       path: "items",
       populate: {
         path: "item",
         models: "Item",
       },
-    }).populate("customer")
+    })
+    .populate("customer")
     .populate("deliveryby")
     .sort([["createdAt", "desc"]])
     .exec((err, orders) => {
@@ -71,20 +72,20 @@ exports.getOrderByCount= (req, res) => {
         res.status(400).json({
           error: "error getting items from DB",
         });
-      }
-      else res.json(orders);
+      } else res.json(orders);
     });
 };
 
 exports.getAllOrderByUserId = (req, res) => {
-  Order.find({ "customer": req.body.id })
+  Order.find({ customer: req.body.id })
     .populate({
       path: "items",
       populate: {
         path: "item",
         models: "Item",
       },
-    }).populate("customer")
+    })
+    .populate("customer")
     .populate("deliveryby")
     .sort([["createdAt", "desc"]])
     .exec((err, orders) => {
@@ -93,19 +94,19 @@ exports.getAllOrderByUserId = (req, res) => {
         res.status(400).json({
           error: "error getting items from DB",
         });
-      }
-      else res.json(orders);
+      } else res.json(orders);
     });
 };
 exports.getAllOrderByDeliveryId = (req, res) => {
-  Order.find({ "deliveryby": req.body.id })
+  Order.find({ deliveryby: req.body.id })
     .populate({
       path: "items",
       populate: {
         path: "item",
         models: "Item",
       },
-    }).populate("customer")
+    })
+    .populate("customer")
     .populate("deliveryby")
     .sort([["createdAt", "desc"]])
     .exec((err, orders) => {
@@ -114,7 +115,20 @@ exports.getAllOrderByDeliveryId = (req, res) => {
         res.status(400).json({
           error: "error getting items from DB",
         });
-      }
-      else res.json(orders);
+      } else res.json(orders);
     });
+};
+
+exports.orderCount = (req, res) => {
+  Order.collection.countDocuments({}, (err, ordercount) => {
+    if (err) {
+      res.status(400).json({
+        error: "order count error",
+      });
+    } else {
+      res.json({
+        ordercount,
+      });
+    }
+  });
 };

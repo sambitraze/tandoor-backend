@@ -7,7 +7,8 @@ const {
   getUsers,
   updateUser,
   createUser,
-  getUserByPhone
+  getUserByPhone,
+  userCount
 } = require("../controller/user");
 
 // Middlewares
@@ -31,6 +32,8 @@ router.post("/number", getUserByPhone);
 
 //Get All Users
 router.get("/", getUsers);
+
+router.get("/count", userCount);
 
 //Update User
 router.put("/update/:userId", updateUser);
