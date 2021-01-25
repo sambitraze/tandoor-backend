@@ -1,4 +1,4 @@
-const Offer = require("../models/top");
+const Offer = require("../models/offer");
 
 exports.createOffer = (req, res) => {
   const offer = new Offer(req.body);
