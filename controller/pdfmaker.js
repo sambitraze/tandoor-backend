@@ -6,10 +6,7 @@ exports.createPdf = (req, res) => {
   let items = [];
   let totalItems = 0;
   let totalAmt = 0;
-
   try {
-    const order = new Order(req.body);
-
     var table =
       '<center><table style="text-align:center;width:95%;font-weight: bold;"><thead><tr><th colspan="6">Tandoor Hut</th></tr></thead><tbody><tr></tr><tr></tr><tr><td colspan="6">Godhana Road Ara<br>Phone No. 9852259112, 8340245998<br>Email: tandoorhutara@gmail.com<br>GSTIN:10HIAPK7037L1ZA<br>State: 10-Bihar</td></tr><tr></tr><tr></tr><tr><td colspan="6">TAX INVOICE</td></tr><tr></tr><tr></tr><tr><td colspan="3"></td><td colspan="2">Invoice No.</td><td>' +
       req.body.orderId +
