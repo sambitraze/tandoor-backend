@@ -46,7 +46,7 @@ exports.createPdf = (req, res) => {
         parseFloat(req.body.gst)
       ).toFixed(2);
     '</td></tr><tr><td></td><td></td><td></td><td colspan="2">Offer</td><td>' +
-      "-"(
+      "-"+(
         parseFloat(req.body.amount) *
           0.01 *
           parseFloat(req.body.offer.percentage)
