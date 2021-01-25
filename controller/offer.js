@@ -20,11 +20,24 @@ exports.getOffer = (req, res) => {
       console.log(err);
       if (err) {
         res.status(400).json({
-          error: "error saving offer in DB",
+          error: "error getting offer in DB",
         });
       }
       res.json(offer);
     });
+};
+exports.getAppOffer = (req, res) => {
+  Offer
+  .find({block: false})
+  .exec((err, offer) => {
+    console.log(err);
+    if (err) {
+      res.status(400).json({
+        error: "error getting offer in DB",
+      });
+    }
+    res.json(offer);
+  });
 };
 exports.updateOfferById = (req, res) => {
     Offer.findByIdAndUpdate(
