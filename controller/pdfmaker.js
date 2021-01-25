@@ -24,7 +24,7 @@ exports.createPdf = (req, res) => {
       <td>${req.body.items[i].item.price}</td>
       <td>${req.body.items[i].count}</td>
       <td>${req.body.items[i].item.price * req.body.items[i].count}</td> </tr>`;
-      count+=parseInt(req.body.items[i].count,10);
+      count += parseInt(req.body.items[i].count, 10);
     }
 
     table +=
@@ -37,14 +37,34 @@ exports.createPdf = (req, res) => {
       '</td></tr><tr><td colspan="2">Bill To:</td><td>' +
       req.body.custName +
       '</td><td colspan="2">CGST</td><td>' +
-      (req.body.gst/2).toFixed(2) +
+      (req.body.gst / 2).toFixed(2) +
       "</td></tr><tr><td>Mob No.</td><td></td><td>" +
       req.body.custNumber +
       '</td><td colspan="2">SGST</td><td>' +
-      (req.body.gst/2).toFixed(2) +
+      (req.body.gst / 2).toFixed(2) +
       '</td></tr><tr><td></td><td></td><td></td><td colspan="2">Total</td><td>' +
-      (parseFloat(req.body.amount) + parseFloat(req.body.packing) + parseFloat(req.body.gst)).toFixed(2)+
-      '</td></tr><tr><td></td><td></td><td></td><td colspan="2"></td><td></td></tr><tr><td></td><td></td><td></td><td colspan="2"></td><td></td></tr></tbody></table></center>';
+      (
+        parseFloat(req.body.amount) +
+        parseFloat(req.body.packing) +
+        parseFloat(req.body.gst)
+      ).toFixed(2);
+    ('</td></tr><tr><td></td><td></td><td></td><td colspan="2"></td><td></td></tr><tr><td></td><td></td><td></td><td colspan="2"></td><td></td></tr></tbody></table></center>');
+    '</td></tr><tr><td></td><td></td><td></td><td colspan="2">Offer</td><td>' +
+      "-"(
+        parseFloat(req.body.amount) *
+          0.01 *
+          parseFloat(req.body.offer.percentage)
+      );
+    '</td></tr><tr><td></td><td></td><td></td><td colspan="2">Grand Total</td><td>' +
+      (
+        parseFloat(req.body.amount) +
+        parseFloat(req.body.packing) +
+        parseFloat(req.body.gst)
+      ).toFixed(2) -
+      parseFloat(req.body.amount) *
+        0.01 *
+        parseFloat(req.body.offer.percentage);
+    ('</td></tr><tr><td></td><td></td><td></td><td colspan="2"></td><td></td></tr><tr><td></td><td></td><td></td><td colspan="2"></td><td></td></tr></tbody></table></center>');
 
     html = table;
     var options = { width: "56mm" };

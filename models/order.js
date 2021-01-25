@@ -26,6 +26,10 @@ const orderSchema = mongoose.Schema(
     custNumber: {
       type: String,
     },
+    offer : {
+      type: ObjectId,
+      ref: "Offer",
+    },
     deliveryby: {
       type: ObjectId,
       ref: "Delivery",

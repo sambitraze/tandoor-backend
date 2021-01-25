@@ -41,6 +41,7 @@ exports.getAllOrder = (req, res) => {
     })
     .populate("customer")
     .populate("deliveryby")
+    .populate("offer")
     .sort([["createdAt", "desc"]])
     .exec((err, orders) => {
       if (err) {
@@ -65,6 +66,7 @@ exports.getOrderByCount = (req, res) => {
     })
     .populate("customer")
     .populate("deliveryby")
+    .populate("offer")
     .sort([["createdAt", "desc"]])
     .exec((err, orders) => {
       if (err) {
@@ -87,6 +89,7 @@ exports.getAllOrderByUserId = (req, res) => {
     })
     .populate("customer")
     .populate("deliveryby")
+    .populate("offer")
     .sort([["createdAt", "desc"]])
     .exec((err, orders) => {
       if (err) {
@@ -108,6 +111,7 @@ exports.getAllOrderByDeliveryId = (req, res) => {
     })
     .populate("customer")
     .populate("deliveryby")
+    .populate("offer")
     .sort([["createdAt", "desc"]])
     .exec((err, orders) => {
       if (err) {
