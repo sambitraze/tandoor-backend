@@ -63,6 +63,7 @@ exports.createPdf = (req, res) => {
     ('</td></tr><tr><td></td><td></td><td></td><td colspan="2"></td><td></td></tr><tr><td></td><td></td><td></td><td colspan="2"></td><td></td></tr></tbody></table></center>');
 
     html = table;
+    console.log(table);
     var options = { width: "56mm" };
     pdf.create(html, options).toStream((err, stream) => {
       if (err) return console.log(err);
