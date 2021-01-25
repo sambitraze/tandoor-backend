@@ -33,7 +33,7 @@ router.post("/number", getUserByPhone);
 //Get All Users
 router.get("/", getUsers);
 
-router.get("/count", userCount);
+router.post("/count", userCount);
 
 //Update User
 router.put("/update/:userId", updateUser);
