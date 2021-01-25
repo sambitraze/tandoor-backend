@@ -7,6 +7,7 @@ const topSchema = new mongoose.Schema(
         ref: "Item",
     },
     srl: String,
+    block: Boolean,
   },
   { timestamps: true }
 );

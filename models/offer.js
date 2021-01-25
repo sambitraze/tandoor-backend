@@ -5,6 +5,7 @@ const offerSchema = new mongoose.Schema(
     offerCode: String,
     minLimit: String,
     maxLimit: String,
+    block: Boolean,   
   },
   { timestamps: true }
 );
