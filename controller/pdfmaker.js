@@ -44,13 +44,13 @@ exports.createPdf = (req, res) => {
         parseFloat(req.body.amount) +
         parseFloat(req.body.packing) +
         parseFloat(req.body.gst)
-      ).toFixed(2);
+      ).toFixed(2) +
     '</td></tr><tr><td></td><td></td><td></td><td colspan="2">Offer</td><td>' +
       "-"+(
         parseFloat(req.body.amount) *
           0.01 *
           parseFloat(req.body.offer.percentage)
-      );
+      )+
     '</td></tr><tr><td></td><td></td><td></td><td colspan="2">Grand Total</td><td>' +
       (
         parseFloat(req.body.amount) +
@@ -59,7 +59,7 @@ exports.createPdf = (req, res) => {
       ).toFixed(2) -
       parseFloat(req.body.amount) *
         0.01 *
-        parseFloat(req.body.offer.percentage);
+        parseFloat(req.body.offer.percentage)+
     ('</td></tr><tr><td></td><td></td><td></td><td colspan="2"></td><td></td></tr><tr><td></td><td></td><td></td><td colspan="2"></td><td></td></tr></tbody></table></center>');
 
     html = table;
