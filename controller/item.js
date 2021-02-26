@@ -13,8 +13,7 @@ exports.createItem = (req, res) => {
 };
 
 exports.deleteitem = (req, res) => {
-  let item = req.Item;
-  Item.deleteOne(item, (err, itemdeleted) => {
+  Item.deleteOne({ "_id" : req.params.itemId }, (err, itemdeleted) => {
     if (err) {
       res.status(400).json({
         error: "error deleting item in DB",

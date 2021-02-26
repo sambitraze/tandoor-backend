@@ -15,6 +15,7 @@ var userSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
+    city: String,
     email: {
       type: String,
       trim: true,
