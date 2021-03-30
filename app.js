@@ -12,6 +12,8 @@ const deliveryBoyRoute = require("./routes/delivery");
 const notificationRoute = require("./routes/notifications");
 const offerRoute = require("./routes/offer");
 const topRoute = require("./routes/top");
+const tableRoute = require("./routes/table");
+const bookingRoute = require("./routes/booking");
 const path = require("path");
 const cors = require("cors");
 const http = require("http");
@@ -30,6 +32,8 @@ app.use("/notification", notificationRoute);
 app.use("/deliveryBoy", deliveryBoyRoute);
 app.use("/offer", offerRoute);
 app.use("/top", topRoute);
+app.use("/table", tableRoute);
+app.use("/booking", bookingRoute);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -53,10 +57,10 @@ app.get("/", (req, res) => {
 });
 
 // for local
-// app.listen(3000);
+app.listen(3000);
 
 //for server 
-const httpServer = http.createServer(app);
-httpServer.listen(80, () => {
-  console.log("HTTP Server running on port 80");
-});
+// const httpServer = http.createServer(app);
+// httpServer.listen(80, () => {
+//   console.log("HTTP Server running on port 80");
+// });
