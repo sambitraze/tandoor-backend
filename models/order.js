@@ -44,7 +44,7 @@ const orderSchema = mongoose.Schema(
     orderType: {
       type: String,
       default: "Billing",
-      enum: ["Delivery", "Billing", "Takeaway", "Dinein"],
+      enum: ["Delivery", "Billing", "Takeaway"],
     },
     status: {
       type: String,
