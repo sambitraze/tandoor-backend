@@ -31,7 +31,7 @@ exports.updateBooking = (req, res) => {
 };
 
 exports.getTodayBookingByUserId = (req, res) => {
-  Booking.find({ customer: req.body.customer , date: req.body.date})
+  Booking.find({ customer: req.body.customer, date: req.body.date })
     .populate("customer")
     .sort([["createdAt", "desc"]])
     .exec((err, bookings) => {
@@ -44,7 +44,9 @@ exports.getTodayBookingByUserId = (req, res) => {
 };
 
 exports.getPastBookingByUserId = (req, res) => {
-  Booking.find({ customer: req.body.customer , date: { $ne: req.body.date }})
+  Booking.find({ customer: req.body.customer, date: { $ne: req.body.date } })
+    .skip(req.body.skip)
+    .limit(req.body.limit)
     .populate("customer")
     .sort([["createdAt", "desc"]])
     .exec((err, bookings) => {
@@ -71,6 +73,8 @@ exports.gettodayBookingByDate = (req, res) => {
 
 exports.getpastBookingByDate = (req, res) => {
   Booking.find({ date: { $ne: req.body.date } })
+    .skip(req.body.skip)
+    .limit(req.body.limit)
     .populate("customer")
     .sort([["createdAt", "desc"]])
     .exec((err, bookings) => {
