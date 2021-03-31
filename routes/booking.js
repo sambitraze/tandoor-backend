@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const {createBooking,updateBooking,getAllBooking,gettodayBookingByDate,getpastBookingByDate,getAllBookingByUserId, getBookingCount} = require("../controller/booking");
+const {createBooking,updateBooking,getTodayBookingByUserId,getPastBookingByUserId,gettodayBookingByDate,getpastBookingByDate,getAllBookingByUserId, getBookingCount} = require("../controller/booking");
 
 router.post("/create", createBooking);
 router.put("/update", updateBooking);
-router.get("/", getAllBooking);
+router.post("/today", getTodayBookingByUserId);
+router.post("/today", getPastBookingByUserId);
 router.post("/today", gettodayBookingByDate);
 router.post("/past", getpastBookingByDate);
 router.post("/user", getAllBookingByUserId);
