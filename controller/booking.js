@@ -44,7 +44,7 @@ exports.getAllBooking = (req, res) => {
     });
 };
 
-exports.getAllBookingByUserId = (req, res, next, id) => {
+exports.getAllBookingByUserId = (req, res) => {
   Booking.find({ customer: req.body.customer })
     .populate("customer")
     .sort([["createdAt", "desc"]])
@@ -56,8 +56,21 @@ exports.getAllBookingByUserId = (req, res, next, id) => {
       } else res.json(bookings);
     });
 };
-exports.getAllBookingByDate = (req, res, next, id) => {
+exports.gettodayBookingByDate = (req, res) => {
   Booking.find({ date: req.body.date })
+    .populate("customer")
+    .sort([["createdAt", "desc"]])
+    .exec((err, bookings) => {
+      if (err) {
+        return res.status(400).json({
+          error: "date bookings not found",
+        });
+      } else res.json(bookings);
+    });
+};
+
+exports.getpastBookingByDate = (req, res) => {
+  Booking.find({ date: { $ne: req.body.date } })
     .populate("customer")
     .sort([["createdAt", "desc"]])
     .exec((err, bookings) => {
