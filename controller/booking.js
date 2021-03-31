@@ -30,20 +30,6 @@ exports.updateBooking = (req, res) => {
   );
 };
 
-exports.getAllBooking = (req, res) => {
-  Booking.find()
-    .sort([["createdAt", "desc"]])
-    .populate("customer")
-    .exec((err, bookings) => {
-      if (err) {
-        res.status(400).json({
-          error: "error getting bookings from DB",
-        });
-      }
-      res.json(bookings);
-    });
-};
-
 exports.getTodayBookingByUserId = (req, res) => {
   Booking.find({ customer: req.body.customer , date: req.body.date})
     .populate("customer")
