@@ -31,7 +31,7 @@ exports.updateBooking = (req, res) => {
 };
 
 exports.getTodayBookingByUserId = (req, res) => {
-  Booking.find({ customer: req.body.customer, date: req.body.date })
+  Booking.find({ customer: req.body.customer, date: req.body.date, canceled: false })
     .populate("customer")
     .sort([["createdAt", "desc"]])
     .exec((err, bookings) => {
