@@ -1,8 +1,8 @@
+require('dotenv').config()
 const express = require("express");
 const mongoose = require("mongoose");
 const admin = require("firebase-admin");
 const app = express();
-const bodyparser = require('body-parser');
 const userRoutes = require("./routes/user");
 const temproute = require("./routes/temp");
 const itemroute = require("./routes/item");
@@ -14,14 +14,14 @@ const offerRoute = require("./routes/offer");
 const topRoute = require("./routes/top");
 const tableRoute = require("./routes/table");
 const bookingRoute = require("./routes/booking");
+const smsRoute = require("./routes/sms");
 const path = require("path");
 const cors = require("cors");
 const http = require("http");
 var serviceAccount = require("./serviceAccountKey.json");
-require("dotenv/config");
 
 app.use(cors());
-app.use(bodyparser.json());
+app.use(express.json());
 app.use("/admin", express.static(path.join(__dirname, '/dashboard')));
 app.use("/user", userRoutes);
 app.use("/api", temproute);
@@ -34,6 +34,7 @@ app.use("/offer", offerRoute);
 app.use("/top", topRoute);
 app.use("/table", tableRoute);
 app.use("/booking", bookingRoute);
+app.use("/sms", smsRoute);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
