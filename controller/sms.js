@@ -6,7 +6,7 @@ exports.sendSms = (req, res) => {
   try {
     client.messages
       .create({
-        body: "Order Update\nYour order number: has been placed succesfully.",
+        body: req.body.message,
         from: process.env.TWILIO_PHONE_NUMBER,
         to: req.body.phone,
       })
