@@ -26,7 +26,7 @@ const orderSchema = mongoose.Schema(
     custNumber: {
       type: String,
     },
-    offer : {
+    offer: {
       type: ObjectId,
       ref: "Offer",
     },
@@ -48,8 +48,15 @@ const orderSchema = mongoose.Schema(
     },
     status: {
       type: String,
-      default: "placed",
-      enum: ["placed", "cancelled", "cooking","completed", "out for delivery"]
+      default: "unconfirmed",
+      enum: [
+        "unconfirmed",
+        "placed",
+        "cancelled",
+        "cooking",
+        "completed",
+        "out for delivery",
+      ],
     },
     amount: {
       require: true,
