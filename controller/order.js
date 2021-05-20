@@ -53,6 +53,102 @@ exports.getAllOrder = (req, res) => {
     });
 };
 
+exports.getAllUnconfirmedOrder = (req, res) => {
+  Order.find({ status: "unconfirmed" })
+    .populate({
+      path: "items",
+      populate: {
+        path: "item",
+        models: "Item",
+      },
+    })
+    .populate("customer")
+    .populate("deliveryby")
+    .populate("offer")
+    .sort([["createdAt", "desc"]])
+    .exec((err, orders) => {
+      if (err) {
+        console.log(err);
+        res.status(400).json({
+          error: "error getting items from DB",
+        });
+      } else res.json(orders);
+    });
+};
+
+exports.getAllConfimredOrder = (req, res) => {
+  Order.find({ status: { $ne: "unconfirmed" } })
+    .populate({
+      path: "items",
+      populate: {
+        path: "item",
+        models: "Item",
+      },
+    })
+    .populate("customer")
+    .populate("deliveryby")
+    .populate("offer")
+    .sort([["createdAt", "desc"]])
+    .exec((err, orders) => {
+      if (err) {
+        console.log(err);
+        res.status(400).json({
+          error: "error getting items from DB",
+        });
+      } else res.json(orders);
+    });
+};
+
+exports.getConfirmedOrderByCount = (req, res) => {
+  Order.find({ status: "unconfirmed" })
+    .skip(req.body.skip)
+    .limit(req.body.limit)
+    .populate({
+      path: "items",
+      populate: {
+        path: "item",
+        models: "Item",
+      },
+    })
+    .populate("customer")
+    .populate("deliveryby")
+    .populate("offer")
+    .sort([["createdAt", "desc"]])
+    .exec((err, orders) => {
+      if (err) {
+        console.log(err);
+        res.status(400).json({
+          error: "error getting items from DB",
+        });
+      } else res.json(orders);
+    });
+};
+
+exports.getUnconfirmedOrderByCount = (req, res) => {
+  Order.find({ status: { $ne: "unconfirmed" } })
+    .skip(req.body.skip)
+    .limit(req.body.limit)
+    .populate({
+      path: "items",
+      populate: {
+        path: "item",
+        models: "Item",
+      },
+    })
+    .populate("customer")
+    .populate("deliveryby")
+    .populate("offer")
+    .sort([["createdAt", "desc"]])
+    .exec((err, orders) => {
+      if (err) {
+        console.log(err);
+        res.status(400).json({
+          error: "error getting items from DB",
+        });
+      } else res.json(orders);
+    });
+};
+
 exports.getOrderByCount = (req, res) => {
   Order.find()
     .skip(req.body.skip)
@@ -94,7 +190,7 @@ exports.getAllOrderByUserId = (req, res) => {
         populate: {
           path: "item",
           models: "Item",
-      },
+        },
       },
     })
     .populate("deliveryby")
@@ -125,7 +221,7 @@ exports.getAllOrderByDeliveryId = (req, res) => {
         populate: {
           path: "item",
           models: "Item",
-      },
+        },
       },
     })
     .populate("deliveryby")
