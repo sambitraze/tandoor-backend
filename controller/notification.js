@@ -15,14 +15,10 @@ exports.sendNotification = (req, res) => {
     .messaging()
     .sendToDevice(req.body.deviceToken, payload, options)
     .then(function (response) {
-      return res.json({
-        message: "Successfully Send",
-      });
+      return res.json(response);
     })
-    .catch(function (error) {
-      return res.json({
-        message: "Not Send",
-      });
+    .catch(function (e) {
+      res.status(400).json(e);
     });
 };
 
@@ -40,13 +36,36 @@ exports.sendNotificationToAll = (req, res) => {
     .messaging()
     .sendToTopic(topic, payload)
     .then(function (response) {
-      return res.json({
-        message: "Successfully Send",
-      });
+      return res.json(response);
     })
-    .catch(function (error) {
-      return res.json({
-        message: "Not Send",
-      });
+    .catch(function (e) {
+      res.status(400).json(e);
     });
-}
+};
+
+exports.subscribeToTopic = (req, res) => {
+  const registrationTokens = [req.body.deviceToken];
+  admin
+    .messaging()
+    .subscribeToTopic(registrationTokens, req.body.topic)
+    .then((response) => {
+      res.json(response);
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(400).json(e);
+    });
+};
+
+exports.unsubscribeToTopic = (req, res) => {
+  const registrationTokens = [req.body.deviceToken];
+  admin
+    .messaging()
+    .unsubscribeFromTopic(registrationTokens, req.body.topic)
+    .then((response) => {
+      res.json(response);
+    })
+    .catch((e) => {
+      res.status(400).json(e);
+    });
+};
