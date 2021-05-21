@@ -22,7 +22,7 @@ var serviceAccount = require("./serviceAccountKey.json");
 
 app.use(cors());
 app.use(express.json());
-app.use("/admin", express.static(path.join(__dirname, '/dashboard')));
+app.use("/", express.static(path.join(__dirname, '/dashboard')));
 app.use("/user", userRoutes);
 app.use("/api", temproute);
 app.use("/item", itemroute);
@@ -53,9 +53,9 @@ mongoose
   });
 
 //Routes
-app.get("/", (req, res) => {
-  res.send("server is live");
-});
+// app.get("/", (req, res) => {
+//   res.send("server is live");
+// });
 
 // for local
 // app.listen(3000);
