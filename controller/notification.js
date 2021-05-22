@@ -45,6 +45,7 @@ exports.sendNotificationToAll = (req, res) => {
 
 exports.subscribeToTopic = (req, res) => {
   const registrationTokens = [req.body.deviceToken];
+ console.log(registrationTokens);
   admin
     .messaging()
     .subscribeToTopic(registrationTokens, req.body.topic)
