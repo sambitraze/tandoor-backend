@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const admin = require("firebase-admin");
 const app = express();
+const httpapp = express();
 const userRoutes = require("./routes/user");
 const temproute = require("./routes/temp");
 const itemroute = require("./routes/item");
@@ -61,6 +62,10 @@ app.get("/", (req, res) => {
 
 // for local
 // app.listen(3000);
+
+httpapp.get("*", function (req, res, next) {
+  res.redirect("https://" + req.headers.host + req.path);
+});
 
 //for server
 const httpServer = http.createServer(app);
