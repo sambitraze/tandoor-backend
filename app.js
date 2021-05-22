@@ -56,9 +56,9 @@ mongoose
   });
 
 //Routes
-app.get("/", (req, res) => {
-  res.send("server is live");
-});
+// app.get("/", (req, res) => {
+//   res.send("server is live");
+// });
 
 // for local
 // app.listen(3000);

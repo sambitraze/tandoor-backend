@@ -20,26 +20,35 @@ if (!firebase.apps.length) {
 }
 
 const messaging = firebase.messaging();
-messaging.usePublicVapidKey(
-  "BG8mGeAu8pxrQEYh9ZSz2Vb7az_0jl8x6gcO6uMEEKAu47p6a0MwZjN5g7LBQk1SyrtqxC2psACzcH8PS-Mnzb4"
-);
-messaging.setBackgroundMessageHandler(function (payload) {
-  const promiseChain = clients
-    .matchAll({
-      type: "window",
-      includeUncontrolled: true,
-    })
-    .then((windowClients) => {
-      for (let i = 0; i < windowClients.length; i++) {
-        const windowClient = windowClients[i];
-        windowClient.postMessage(payload);
-      }
-    })
-    .then(() => {
-      return registration.showNotification("New Message");
-    });
-  return promiseChain;
+messaging.onBackgroundMessage((payload) => {
+  console.log('[firebase-messaging-sw.js] Received background message ', payload);
+  // Customize notification here
+  const notificationTitle = 'Background Message Title';
+  const notificationOptions = {
+    body: 'Background Message body.',
+    icon: '/favicon.png'
+  };
+
+  self.registration.showNotification(notificationTitle,
+    notificationOptions);
 });
-self.addEventListener("notificationclick", function (event) {
-  console.log("notification received: ", event);
-});
+// messaging.setBackgroundMessageHandler(function (payload) {
+//   const promiseChain = clients
+//     .matchAll({
+//       type: "window",
+//       includeUncontrolled: true,
+//     })
+//     .then((windowClients) => {
+//       for (let i = 0; i < windowClients.length; i++) {
+//         const windowClient = windowClients[i];
+//         windowClient.postMessage(payload);
+//       }
+//     })
+//     .then(() => {
+//       return registration.showNotification("New Message");
+//     });
+//   return promiseChain;
+// });
+// self.addEventListener("notificationclick", function (event) {
+//   console.log("notification received: ", event);
+// });
