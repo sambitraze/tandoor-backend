@@ -1,4 +1,4 @@
-require('dotenv').config()
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const admin = require("firebase-admin");
@@ -18,11 +18,13 @@ const smsRoute = require("./routes/sms");
 const path = require("path");
 const cors = require("cors");
 const http = require("http");
+const fs = require("fs");
+const https = require("https");
 var serviceAccount = require("./serviceAccountKey.json");
 
 app.use(cors());
 app.use(express.json());
-app.use("/admin", express.static(path.join(__dirname, '/dashboard')));
+app.use("/admin", express.static(path.join(__dirname, "/dashboard")));
 app.use("/user", userRoutes);
 app.use("/api", temproute);
 app.use("/item", itemroute);
@@ -38,7 +40,7 @@ app.use("/sms", smsRoute);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://tandoor-hut.firebaseio.com"
+  databaseURL: "https://tandoor-hut.firebaseio.com",
 });
 
 //Mongo DB
@@ -60,8 +62,19 @@ app.get("/", (req, res) => {
 // for local
 // app.listen(3000);
 
-//for server 
+//for server
 const httpServer = http.createServer(app);
 httpServer.listen(80, () => {
   console.log("HTTP Server running on port 80");
+});
+const httpsServer = https.createServer(
+  {
+    key: fs.readFileSync(path.resolve(__dirname, "./ssl/privkey.pem")),
+    cert: fs.readFileSync(path.resolve(__dirname, "./ssl/fullchain.pem")),
+  },
+  app
+);
+
+httpsServer.listen(443, () => {
+  console.log("HTTPS Server running on port 443");
 });
