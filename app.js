@@ -16,6 +16,7 @@ const topRoute = require("./routes/top");
 const tableRoute = require("./routes/table");
 const bookingRoute = require("./routes/booking");
 const smsRoute = require("./routes/sms");
+const devicetokenRoute = require("./routes/deviceTokenData");
 const path = require("path");
 const cors = require("cors");
 const http = require("http");
@@ -25,6 +26,11 @@ var serviceAccount = require("./serviceAccountKey.json");
 
 app.use(cors());
 app.use(express.json());
+
+httpapp.get("*", function (req, res, next) {
+  res.redirect("https://" + req.headers.host + req.path);
+});
+
 app.use("/", express.static(path.join(__dirname, "/dashboard")));
 app.use("/user", userRoutes);
 app.use("/api", temproute);
@@ -38,6 +44,7 @@ app.use("/top", topRoute);
 app.use("/table", tableRoute);
 app.use("/booking", bookingRoute);
 app.use("/sms", smsRoute);
+app.use("/devicetoken", devicetokenRoute);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -63,12 +70,10 @@ mongoose
 // for local
 // app.listen(3000);
 
-httpapp.get("*", function (req, res, next) {
-  res.redirect("https://" + req.headers.host + req.path);
-});
+
 
 //for server
-const httpServer = http.createServer(app);
+const httpServer = http.createServer(httpapp);
 httpServer.listen(80, () => {
   console.log("HTTP Server running on port 80");
 });
