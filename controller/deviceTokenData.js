@@ -12,6 +12,17 @@ exports.createDeviceTokenData = (req, res) => {
   });
 };
 
+exports.deleteDeviceTokenData = (req, res) => {
+  DeviceTokenData.deleteOne({ "_id" : req.params.id },(err, deletedToken) => {
+    if (err) {
+      res.status(400).json({
+        error: "error deleting deviceTokenData in DB",
+      });
+    }
+    res.json(deletedToken);
+  });
+};
+
 exports.getDeviceTokenData = (req, res) => {
   DeviceTokenData.find().exec((err, deviceTokenData) => {
     if (err) {
