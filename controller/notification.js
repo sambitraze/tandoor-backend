@@ -59,10 +59,9 @@ exports.subscribeToTopic = (req, res) => {
 };
 
 exports.unsubscribeToTopic = (req, res) => {
-  const registrationTokens = [req.body.deviceToken];
   admin
     .messaging()
-    .unsubscribeFromTopic(registrationTokens, req.body.topic)
+    .unsubscribeFromTopic(req.body.deviceToken, req.body.topic)
     .then((response) => {
       res.json(response);
     })
